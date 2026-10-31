@@ -110,7 +110,7 @@ audio.addEventListener('ended',()=>{
 audio.addEventListener('pause',()=>{if(!audio.ended){playing=false;upd();}});
 audio.addEventListener('play',()=>{playing=true;upd();});
 function finishIntro(){ $('intro').classList.add('hide'); started=true; render(); playCurrent(); }
-$('start').addEventListener('click',()=>{
+$('start').addEventListener('click',e=>{ e.stopPropagation();
   $('intro').classList.add('playing');
   audio.src='audio/'+INTRO.id+'.mp3';
   audio.play().catch(()=>finishIntro());
